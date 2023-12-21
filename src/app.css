@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Prociono";
+    src: url(./lib/assets/Prociono.otf) format("opentype");
+}
+
+.primary-font {
+    font-family: "Prociono";
+}
+
+.primary-color {
+    background-color: #afcbfa;
+}
+
+.on-primary-color {
+    color: #062e6f;
+}
+
+.on-primary-hover-color {
+    color: #efefef;
+}
