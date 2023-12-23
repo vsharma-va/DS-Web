@@ -1,12 +1,14 @@
 <script>
+    import { page } from "$app/stores";
     import logo from "../assets/logo.png";
     import AllButton from "./AllButton.svelte";
+    import { signIn, signOut } from "@auth/sveltekit/client";
 
     let menu;
     let signInBtn;
     let navMenuOpen = false;
     function openNavMenu() {
-        console.log(menu);
+        // console.log(menu);
         if (navMenuOpen) {
             menu.classList.remove("left-[0%]");
             menu.classList.add("left-[-100%]");
@@ -50,7 +52,16 @@
         </div>
         <button
             class="primary-font text-lg md:text-xl xl:text-2xl font-bold text-on-primary-color px-5 bg-primary-color rounded-[48px] transition-all"
-            bind:this={signInBtn}>Sign In</button
+            bind:this={signInBtn}
+            on:click={$page.data.session
+                ? async () => {
+                      await signOut({ callbackUrl: "/?logout" });
+                  }
+                : async () => {
+                      await signIn("google", {
+                          callbackUrl: "/?signedIn",
+                      });
+                  }}>Sign In</button
         >
     </div>
 </div>

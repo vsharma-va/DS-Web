@@ -1,8 +1,11 @@
-<script>
+<script lang="ts">
     import displayPhoto from "../lib/assets/profile-photo.jpg";
     import displayPhotoBg from "../lib/assets/bg.jpg";
     import AllButton from "$lib/common/AllButton.svelte";
     import ProductCard from "$lib/common/ProductCard.svelte";
+    import type { WithId } from "mongodb";
+
+    export let data: WithId<Document>[];
 </script>
 
 <div class="h-fit w-full">
@@ -143,7 +146,16 @@
         class="flex w-full flex-col lg:flex-row h-fit flex-wrap justify-around items-center xl:px-[39px] md:px-[30px] px-[10px] pt-[75px] gap-5"
         id="products"
     >
-        <div class="lg:w-[45%] xl:w-[30%] w-full">
+        {#each data.cardData as cardData}
+            <div class="lg:w-[45%] xl:w-[30%] w-full">
+                <ProductCard
+                    cardTitle={cardData.card_heading}
+                    cardAuthor={cardData.card_author}
+                    upcoming={cardData.upcoming}
+                />
+            </div>
+        {/each}
+        <!-- <div class="lg:w-[45%] xl:w-[30%] w-full">
             <ProductCard cardTitle="BNN Basics & Advanced" />
         </div>
         <div class="lg:w-[45%] xl:w-[30%] w-full">
@@ -160,7 +172,7 @@
         </div>
         <div class="lg:w-[45%] xl:w-[30%] w-full">
             <ProductCard cardTitle="KP Fundamentals" />
-        </div>
+        </div> -->
     </div>
     <div
         class="flex flex-col lg:flex-row w-full xl:px-[39px] md:px-[30px] px-[10px] pt-[75px] h-fit z-0"
