@@ -23,7 +23,7 @@
         {:else if upcoming}
             <AllButton btnText="Learn More" />
         {:else}
-            <AllButton btnText="Start Learning" />
+            <AllButton btnText="Start Learning" urlTravelTo={linkTo} />
         {/if}
     </div>
     <div
