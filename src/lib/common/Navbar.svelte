@@ -1,5 +1,6 @@
 <script>
-    import { page } from "$app/stores";
+    import { browser } from "$app/environment";
+    import { navigating, page } from "$app/stores";
     import logo from "../assets/logo.png";
     import AllButton from "./AllButton.svelte";
     import { signIn, signOut } from "@auth/sveltekit/client";
@@ -7,8 +8,7 @@
     let menu;
     let signInBtn;
     let navMenuOpen = false;
-    function openNavMenu() {
-        // console.log(menu);
+    const openNavMenu = async () => {
         if (navMenuOpen) {
             menu.classList.remove("left-[0%]");
             menu.classList.add("left-[-100%]");
@@ -17,13 +17,17 @@
             signInBtn.classList.add("bg-primary-color");
             signInBtn.classList.remove("bg-on-primary-hover-color");
         } else {
-            menu.classList.remove("left-[-100%]");
-            menu.classList.add("left-[0%]");
-            signInBtn.classList.remove("bg-primary-color");
-            signInBtn.classList.add("bg-on-primary-hover-color");
-            navMenuOpen = true;
+            if (menu) {
+                menu.classList.remove("left-[-100%]");
+                menu.classList.add("left-[0%]");
+                signInBtn.classList.remove("bg-primary-color");
+                signInBtn.classList.add("bg-on-primary-hover-color");
+                navMenuOpen = true;
+            }
         }
-    }
+    };
+
+    $: if (navigating) openNavMenu();
 </script>
 
 <div
@@ -61,19 +65,29 @@
                       await signIn("google", {
                           callbackUrl: "/?signedIn",
                       });
-                  }}>Sign In</button
+                  }}
         >
+            <div class="w-full h-full flex">
+                {#if $page.data.session}
+                    Sign Out
+                {:else}
+                    Sign In
+                {/if}
+            </div>
+        </button>
     </div>
 </div>
 <div
     class="flex w-full h-full transition-all fixed left-[-100%] z-[5] flex-col menu primary-color items-center gap-10 text-5xl justify-center"
     bind:this={menu}
 >
-    <div
-        class="on-primary-color font-bold primary-font cursor-pointer hover:bg-[#efefef] hover:border-b-4 hover:border-[on-primary-color] px-5 transition-all py-2 rounded-[48px]"
-    >
-        Home
-    </div>
+    <a href="/" class="flex w-full justify-center items-center">
+        <div
+            class="on-primary-color font-bold primary-font cursor-pointer hover:bg-[#efefef] hover:border-b-4 hover:border-[on-primary-color] px-5 transition-all py-2 rounded-[48px]"
+        >
+            Home
+        </div>
+    </a>
     <div
         class="on-primary-color font-bold primary-font cursor-pointer hover:bg-[#efefef] hover:border-b-4 hover:border-[on-primary-color] px-5 transition-all py-2 rounded-[48px]"
     >

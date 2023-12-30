@@ -1,6 +1,6 @@
 <script lang="ts">
     import displayPhoto from "../lib/assets/profile-photo.jpg";
-    import displayPhotoBg from "../lib/assets/bg.jpg";
+    import landingImage from "../lib/assets/landing-image.jpeg";
     import AllButton from "$lib/common/AllButton.svelte";
     import ProductCard from "$lib/common/ProductCard.svelte";
     import type { WithId } from "mongodb";
@@ -86,7 +86,7 @@
                 </div>
             </div>
             <div
-                class="flex flex-col sticky top-[75px] w-full rounded-[33px] bg-on-primary-hover-color h-[333px] px-[44px] py-[66px] items-center justify-start"
+                class="flex flex-col sticky top-[190px] w-full rounded-[33px] bg-on-primary-hover-color h-[333px] px-[44px] py-[66px] items-center justify-start"
             >
                 <div
                     class="border-[1px] border-black rounded-[33px] px-4 py-1 w-[80%] flex justify-between"
@@ -104,7 +104,7 @@
                 </div>
             </div>
             <div
-                class="flex flex-col sticky top-[75px] w-full rounded-[33px] bg-on-primary-hover-color h-[333px] px-[44px] py-[66px] items-center justify-start"
+                class="flex flex-col sticky top-[305px] w-full rounded-[33px] bg-on-primary-hover-color h-[333px] px-[44px] py-[66px] items-center justify-start"
             >
                 <div
                     class="border-[1px] border-black rounded-[33px] px-4 py-1 w-[80%] flex justify-between"
@@ -122,7 +122,7 @@
                 </div>
             </div>
             <div
-                class="flex flex-col sticky top-[75px] w-full rounded-[33px] bg-on-primary-hover-color h-[333px] px-[44px] py-[66px] items-center justify-start"
+                class="flex flex-col sticky top-[420px] w-full rounded-[33px] bg-on-primary-hover-color h-[333px] px-[44px] py-[66px] items-center justify-start"
             >
                 <div
                     class="border-[1px] border-black rounded-[33px] px-4 py-1 w-[80%] flex justify-between"
