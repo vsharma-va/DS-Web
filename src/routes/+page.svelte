@@ -4,16 +4,20 @@
     import AllButton from "$lib/common/AllButton.svelte";
     import ProductCard from "$lib/common/ProductCard.svelte";
     import type { WithId } from "mongodb";
+    import sal from "sal.js";
 
     export let data: WithId<Document>[];
+    sal();
 </script>
 
 <div class="h-fit w-full">
     <div
-        class="flex flex-col lg:flex-row w-full xl:px-[39px] md:px-[30px] px-[10px] pt-[75px] h-fit gap-10 z-0"
+        class="flex flex-col lg:flex-row w-full xl:px-[39px] md:px-[30px] px-[10px] pt-[75px] h-fit gap-10 z-0 overflow-x-hidden"
     >
         <div
             class="flex flex-col justify-center items-start gap-3 md:gap-[33px] h-[666px] rounded-[33px] px-[15px] py-[15px] lg:px-[33px] lg:py-[55px] bg-primary-color w-full lg:w-[50%] shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
+            data-sal="slide-right"
+            data-sal-duration="450"
         >
             <p
                 class="primary-font text-on-primary-color text-8xl leading-tight font-bold tracking-wider"
@@ -31,6 +35,8 @@
         </div>
         <div
             class="relative h-[666px] rounded-[33px] bg-primary-color z-0 lg:w-[52%] w-full shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
+            data-sal="slide-left"
+            data-sal-duration="450"
         >
             <img
                 src={displayPhoto}
@@ -145,6 +151,8 @@
     <div
         class="flex w-full flex-col lg:flex-row h-fit flex-wrap justify-around items-center xl:px-[39px] md:px-[30px] px-[10px] pt-[75px] gap-5"
         id="products"
+        data-sal="slide-up"
+        data-sal-duration="450"
     >
         {#each data.cardData as cardData}
             <div class="lg:w-[45%] xl:w-[30%] w-full">
@@ -177,6 +185,8 @@
     </div>
     <div
         class="flex flex-col lg:flex-row w-full xl:px-[39px] md:px-[30px] px-[10px] pt-[75px] h-fit z-0"
+        data-sal="slide-up"
+        data-sal-duration="450"
     >
         <div
             class="flex flex-col justify-around items-center gap-3 md:gap-[33px] h-[666px] rounded-t-[33px] lg:rounded-l-[33px] lg:rounded-tr-[0px] px-[15px] py-[15px] lg:px-[33px] lg:py-[55px] bg-primary-color w-full lg:w-[55%] shadow-[0_3px_10px_rgb(0,0,0,0.2)]"

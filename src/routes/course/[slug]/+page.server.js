@@ -1,5 +1,6 @@
 import { MongoClient } from 'mongodb';
 import * as dotenv from 'dotenv';
+import jwt from "jsonwebtoken";
 import { redirect } from '@sveltejs/kit';
 dotenv.config();
 
@@ -25,6 +26,8 @@ export const load = async (event) => {
             const ownershipFound = await dsOwnershipCollection.findOne({
                 owns: singleCardData.uuid.toString()
             }, { projection: projection });
+            const token = jwt.sign({courseId: singleCardData.uuid}, process.env.PAY_SECRET);
+            const calculatedBuyLink = "/payment/" + token;
             if (ownershipFound) {
                 console.log(singleCardData);
                 return { courseData: singleCardData, owned: true }
@@ -34,11 +37,11 @@ export const load = async (event) => {
                     delete singleCardData.video_links;
                     singleCardData.video_links = [firstVidLink];
                     console.log(singleCardData);
-                    return { courseData: singleCardData, owned: false };
+                    return { courseData: singleCardData, owned: false, buyLink: calculatedBuyLink};
                 } else {
                     delete singleCardData.video_links;
                     console.log(singleCardData);
-                    return { courseData: singleCardData, owned: false };
+                    return { courseData: singleCardData, owned: false, buyLink: calculatedBuyLink};
                 }
             }
         } else {
