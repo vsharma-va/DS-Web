@@ -31,7 +31,7 @@
                         frameborder="0"
                         class="w-full h-full rounded-[33px]"
                         allowfullscreen
-                        src="http://www.youtube.com/embed/{data.courseData.video_links[0].split(
+                        src="https://www.youtube.com/embed/{data.courseData.video_links[0].split(
                         '?v='
                     )[1]}"
                 ></iframe>
