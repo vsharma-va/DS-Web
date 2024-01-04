@@ -13,8 +13,8 @@ const projection = {
     _id: 0,
     uuid: 1,
     card_heading: 1,
-    card_author: 1,
     upcoming: 1,
+    cost: 1,
 }
 
 //@ts-ignore

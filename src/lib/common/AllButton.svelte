@@ -20,7 +20,7 @@
                 /></svg
             >
         </div>
-        <p class="primary-font text-on-primary-color text-lg md:text-xl">
+        <p class="primary-font text-on-primary-color text-xl md:text-xl">
             {btnText}
         </p>
     </div>

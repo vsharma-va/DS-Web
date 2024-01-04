@@ -30,6 +30,8 @@ export const load = async (event) => {
     if (!event.params.slug) {
         throw redirect(302, "/");
     } else {
+        console.log(process.env.ORIGIN + "/payment/callback/" + "something");
+
         try {
             let decodedData = jwt.verify(event.params.slug, process.env.PAY_SECRET);
             let courseDetails = await dsCoursesCollection.findOne({
