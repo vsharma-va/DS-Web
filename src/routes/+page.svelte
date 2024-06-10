@@ -108,11 +108,14 @@
             },
             "<",
         );
+        textCapturePartThreeTimeline.to('.loading-animation-main', {
+            display: 'none',
+        })
     });
 </script>
 
 <div class="h-[200vh] w-full bg-surface">
-    <div class="w-full h-screen fixed top-0 content-center grid grid-cols-3">
+    <div class="w-full h-screen fixed top-0 content-center grid grid-cols-3 loading-animation-main">
         <div class="col-start-1 col-end-1 div-up-1 bg-surface-dim h-full w-full absolute top-0"></div>
         <div class="col-start-2 col-end-2 div-up-2 bg-surface-dim h-full w-full absolute top-0"></div>
         <div class="col-start-3 col-end-3 div-up-3 bg-surface-dim h-full w-full absolute top-0"></div>
